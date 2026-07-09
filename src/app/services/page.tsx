@@ -1,7 +1,4 @@
-// Arctic Air HVAC — Services Overview
-// Order: Breadcrumb → SectionIntro → TrustBar → ServiceCards → WhatToExpect
-//        → ImpactMetrics → WhyChooseUs → ProcessTimeline → GuaranteeSection
-//        → Testimonials → LocalServiceAreas → ValueComparison → FAQ → CTABanner → Form
+// Blackline Paving — Services Overview
 "use client";
 
 import styles from "./page.module.scss";
@@ -24,153 +21,107 @@ import CTABanner           from "#/PageComponents/CTABanner/CTABanner";
 import Variant2            from "#/PageComponents/ContactForms/Variant2/Form";
 
 import {
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind,
+  faRoad, faSprayCan, faParking, faPaintRoller, faWrench, faLayerGroup,
   faTrophy, faChartLine, faClock,
   faHeadset, faSearch, faFileContract, faCheckCircle,
-  faShieldHalved, faLock, faRotateLeft, faBolt,
+  faShieldHalved, faLock, faTag,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ServicesPage() {
 
   const services = [
-    { icon: faFan,            title: "AC Repair",          body: "Fast, accurate diagnosis on all brands. Same-day service available — we stock common parts on every truck.",                           link: "/services/ac-repair" },
-    { icon: faFire,           title: "Heating Service",    body: "Furnace repair, heat pump service, and emergency heating calls across Central Texas — 7 days a week.",                                 link: "/services/heating" },
-    { icon: faWrench,         title: "New Installation",   body: "Right-sized system selection, clean installation, and full commissioning. Financing available for qualified homeowners.",               link: "/services/installation" },
-    { icon: faFilter,         title: "Duct Cleaning",      body: "Full duct cleaning and sanitizing for improved air quality and system efficiency. A real difference for allergy sufferers.",           link: "/services/duct-cleaning" },
-    { icon: faThermometerHalf, title: "Maintenance Plans", body: "Twice-yearly tune-ups that prevent breakdowns and keep your warranty valid. Month-to-month — no contracts.",                          link: "/services/maintenance" },
-    { icon: faWind,           title: "Indoor Air Quality", body: "Air purifiers, UV lights, whole-home humidifiers, and filtration upgrades that make your home healthier every day.",                   link: "/services/indoor-air-quality" },
+    { icon: faRoad, title: "Asphalt Paving", body: "New and replacement asphalt for driveways, lanes, and pads with proper base and hot-mix compaction.", link: "/services/asphalt-paving" },
+    { icon: faSprayCan, title: "Sealcoating", body: "Protective sealcoat that restores color, blocks UV, and extends pavement life.", link: "/services/sealcoating" },
+    { icon: faParking, title: "Parking Lots", body: "Full parking lot paving and phased rebuilds that keep tenants open.", link: "/services/parking-lots" },
+    { icon: faPaintRoller, title: "Line Striping", body: "ADA stalls, fire lanes, arrows, and full lot layouts.", link: "/services/line-striping" },
+    { icon: faWrench, title: "Pothole Repair", body: "Cut-and-patch repairs with honest repair-vs-overlay advice.", link: "/services/pothole-repair" },
+    { icon: faLayerGroup, title: "Overlay & Resurfacing", body: "Mill and overlay when the base is sound — restore ride quality faster.", link: "/services/overlay-resurfacing" },
   ];
 
   const expectations = [
-    { icon: faSearch,       title: "Free Diagnostic Visit",       description: "We inspect your system and explain exactly what's wrong with a flat-rate price before anything is touched. Diagnostic fee waived when you proceed." },
-    { icon: faCheckCircle,  title: "Upfront Flat-Rate Pricing",   description: "No hourly billing, no surprise fees. You approve the price before we start — and it never changes mid-job." },
-    { icon: faShieldHalved, title: "NATE-Certified Technicians",  description: "Every tech is NATE-certified, background-checked, and licensed in Texas. You know exactly who is coming to your home." },
-    { icon: faWrench,       title: "1-Year Parts & Labor Warranty", description: "Every repair we complete is backed by a full year of coverage on both parts and labor. No fine print." },
+    { icon: faSearch, title: "Free On-Site Estimate", description: "We measure on-site, check base and drainage, and explain exactly what's included with a written price before work starts." },
+    { icon: faCheckCircle, title: "Upfront Flat-Rate Pricing", description: "No hourly billing, no surprise fees. You approve the price before we mobilize." },
+    { icon: faShieldHalved, title: "Commercial Paving Contractor · Bonded & Insured", description: "Crews led by a commercial paving contractor. Bonded and insured on every job." },
+    { icon: faTag, title: "2-Year Workmanship on New Pavement", description: "New pavement work is backed by our 2-year workmanship guarantee." },
   ];
 
   const metrics = [
-    { icon: faTrophy,    value: 2400, label: "Homes and businesses served since 2010", suffix: "+", duration: 3 },
-    { icon: faChartLine, value: 98,   label: "Customer satisfaction rating",            suffix: "%", duration: 2 },
-    { icon: faClock,     value: 15,   label: "Years serving Waco and Central Texas",    suffix: "+", duration: 2 },
+    { icon: faTrophy, value: 5500, label: "Jobs completed across Central Texas", suffix: "+", duration: 3 },
+    { icon: faChartLine, value: 98, label: "Customer satisfaction rating", suffix: "%", duration: 2 },
+    { icon: faClock, value: 23, label: "Years serving Waco and Central Texas", suffix: "+", duration: 2 },
   ];
 
   const whyFeatures = [
-    { icon: faBolt,          title: "Same-Day & Emergency Service",  description: "We staff for Central Texas summers. Emergency calls get answered and dispatched within the hour — evenings and weekends included." },
-    { icon: faHeadset,       title: "No Contracts, Ever",            description: "Our maintenance plans are month-to-month. Our repairs have no service agreements. You hire us because we do great work — not because you're locked in." },
-    { icon: faShieldHalved,  title: "Financing Available",           description: "New system replacement doesn't have to break the bank. We offer flexible financing options for qualified homeowners — ask us for details." },
+    { icon: faHeadset, title: "A Real Person Answers", description: "Call or text and reach a real Blackline team member — not a call center. We schedule your free estimate fast." },
+    { icon: faShieldHalved, title: "Honest Scope Advice", description: "We'll tell you when a patch is enough and when overlay or rebuild makes sense — no upselling for the sake of it." },
+    { icon: faLock, title: "Bonded & Insured", description: "Fully insured crews. Proof of insurance available on request for property managers and GCs." },
   ];
 
   const processSteps = [
-    { number: 1, title: "Schedule",  description: "Call, text, or book online. We'll confirm a time that fits your schedule — usually same-day.", icon: faHeadset },
-    { number: 2, title: "Diagnose",  description: "Tech arrives on time, inspects your system, and explains the problem clearly — no pressure.",   icon: faSearch },
-    { number: 3, title: "Quote",     description: "Flat-rate written quote before any work starts. No surprises, no hidden fees.",                  icon: faFileContract },
-    { number: 4, title: "Fix",       description: "Completed with quality parts, site left clean, backed by our 1-year parts and labor warranty.", icon: faCheckCircle },
-  ];
-
-  const guarantees = [
-    { icon: faFileContract, title: "Flat-Rate Pricing",            description: "The price you approve is the price you pay. No hourly billing, no change orders mid-job." },
-    { icon: faRotateLeft,   title: "1-Year Repair Warranty",       description: "Every repair is backed by a full year of parts and labor coverage. No fine print." },
-    { icon: faHeadset,      title: "Real People Answer the Phone", description: "Call us at 10pm in July and someone in Waco answers. No call centers, no hold queues." },
-    { icon: faLock,         title: "Licensed, Bonded & Insured",   description: "TDLR-licensed, fully bonded, and insured. License number available on request." },
+    { number: 1, title: "Call or Book", description: "Phone, text, or the form below. We'll confirm a free on-site estimate that fits your schedule.", icon: faHeadset },
+    { number: 2, title: "Measure & Assess", description: "We measure, check base condition, and recommend pave, patch, seal, or overlay in plain English.", icon: faSearch },
+    { number: 3, title: "Flat-Rate Quote", description: "Written price before work starts. You decide — zero pressure.", icon: faFileContract },
+    { number: 4, title: "Pave & Warranty", description: "Professional work, traffic guidance, 2-Year Workmanship on New Pavement.", icon: faCheckCircle },
   ];
 
   const localAreas = [
-    { town: "Waco",         benefit: "Home base — best availability and fastest response in the city.", badge: "Home Base" },
-    { town: "Hewitt",       benefit: "Full residential and commercial service coverage.",                badge: "" },
-    { town: "Woodway",      benefit: "Same-day availability for Woodway-area homes.",                   badge: "" },
-    { town: "Robinson",     benefit: "Regular route — quick turnaround for Robinson customers.",        badge: "" },
-    { town: "China Spring", benefit: "Rural coverage with no trip charge for most locations.",          badge: "" },
-    { town: "Temple",       benefit: "Full service coverage for Bell County homes and businesses.",     badge: "" },
+    { town: "Waco", benefit: "Home base — fastest scheduling in the city.", badge: "Home Base" },
+    { town: "Hewitt", benefit: "Full residential and commercial coverage.", badge: "" },
+    { town: "Woodway", benefit: "Regular availability for Woodway jobs.", badge: "" },
+    { town: "McGregor", benefit: "Reliable turnaround for McGregor customers.", badge: "" },
+    { town: "China Spring", benefit: "Rural coverage with the same flat-rate standards.", badge: "" },
+    { town: "Temple", benefit: "Full service for Bell County homes and businesses.", badge: "" },
   ];
 
   const comparisonRows = [
-    { feature: "Flat-rate upfront pricing",       us: "✅ Always",         others: "❌ Hourly + surprise fees" },
-    { feature: "1-year parts & labor warranty",   us: "✅ Every repair",   others: "❌ Parts only, or none" },
-    { feature: "NATE-certified technicians",      us: "✅ All techs",      others: "❌ Varies" },
-    { feature: "No service contracts required",   us: "✅ Always",         others: "❌ Often required" },
-    { feature: "Emergency & same-day available",  us: "✅ 7 days a week",  others: "❌ Business hours only" },
+    { feature: "Upfront, written pricing", us: "✅ Always", others: "❌ Vague estimates" },
+    { feature: "2-Year Workmanship on New Pavement", us: "✅ Every new pave", others: "❌ Rare or none" },
+    { feature: "Commercial paving contractor", us: "✅ All crews", others: "❌ Not always" },
+    { feature: "Proper base prep included", us: "✅ Standard", others: "❌ Often skipped" },
+    { feature: "Clear traffic-return timeline", us: "✅ Always", others: "❌ Guesswork" },
   ];
 
   const faq = [
-    { question: "How much does HVAC service cost in Waco?",         answer: "Repairs typically range from $150–$800 depending on the issue. New system installation runs $4,500–$12,000 depending on size and type. We always provide a flat-rate written quote before any work begins." },
-    { question: "Do you work on all HVAC brands?",                  answer: "Yes — all major brands including Carrier, Trane, Lennox, Rheem, Goodman, York, and more. We install Carrier and Trane as our primary brands for new systems." },
-    { question: "What does your maintenance plan include?",          answer: "Two visits per year — spring cooling tune-up and fall heating tune-up. Each includes a 20-point inspection, cleaning, filter check, refrigerant check, electrical check, and written report. Month-to-month, cancel anytime." },
-    { question: "Are you available for emergency calls?",            answer: "Yes — 7 days a week including evenings. We understand a broken AC in July is a genuine emergency. Emergency calls are dispatched within the hour." },
-    { question: "How long does a full AC replacement take?",         answer: "Most residential replacements take 4–6 hours. We carry common unit sizes in stock, so most installs happen the same week you request them — often same or next day." },
+    { question: "How much does asphalt work cost in Waco?", answer: "Driveways, lots, and repairs vary by size and scope. We always provide a flat-rate written quote after an on-site estimate." },
+    { question: "Are you a commercial paving contractor?", answer: "Yes — Blackline is a commercial paving contractor, bonded and insured." },
+    { question: "Do you offer emergency pothole repairs?", answer: "We prioritize safety hazards when capacity allows. Call (254) 880-8080." },
+    { question: "What areas do you serve?", answer: "Waco, Hewitt, Woodway, McGregor, China Spring, Bellmead, Temple, Killeen, and most of Central Texas within about 60 miles of Waco." },
+    { question: "Do you offer a warranty?", answer: "Yes — new pavement work is backed by our 2-Year Workmanship on New Pavement." },
+    { question: "How do I get a quote?", answer: "Call, text, or fill out our online form. We'll schedule a free on-site estimate and provide written pricing before any work starts." },
   ];
 
   return (
-    <>
+    <main className={styles.pageWrapper}>
       <Breadcrumb crumbs={[
-        { label: "Home",     href: "/" },
+        { label: "Home", href: "/" },
         { label: "Services" },
       ]} />
-
       <SectionIntro
-        title="HVAC Services for Waco & Central Texas"
-        subtitle="Repair, replacement, maintenance, and air quality — done right, priced fairly, backed by a 1-year warranty on every job."
+        title="Asphalt Paving Services in Waco, TX"
+        subtitle="Paving, sealcoating, parking lots, striping, pothole repair, and overlays — flat-rate quotes, commercial paving contractor, 2-Year Workmanship on New Pavement."
       />
-
-      <TrustBar headline="Trusted by 2,400+ Central Texas homes and businesses since 2010" />
-
-      <div className={styles.section}>
-        <ServiceCardComponent heading="What We Do" cards={services} />
-      </div>
-
-      <div className={styles.section}>
-        <WhatToExpect sectionTitle="How Every Service Call Works" expectations={expectations} />
-      </div>
-
-      <div className={styles.section}>
-        <ImpactMetrics title="Results That Speak for Themselves" metrics={metrics} cityName="Waco" />
-      </div>
-
-      <div className={styles.section}>
-        <WhyChooseUs cityName="Waco" features={whyFeatures} title="Why Central Texas Chooses Arctic Air" />
-      </div>
-
-      <div className={styles.section}>
-        <ProcessTimeline steps={processSteps} />
-      </div>
-
-      <div className={styles.section}>
-        <GuaranteeSection guarantees={guarantees} />
-      </div>
-
-      <div className={styles.section}>
-        <Testimonials testimonials={reviews} />
-      </div>
-
-      <div className={styles.section}>
-        <LocalServiceAreas cityName="Waco" areas={localAreas} servicePath="services" title="Serving All of Central Texas" />
-      </div>
-
-      <div className={styles.section}>
-        <ValueComparison rows={comparisonRows} />
-      </div>
-
-      <div className={styles.section}>
-        <FAQ cityName="Waco" faq={faq} title="HVAC Service FAQs" />
-      </div>
-
+      <TrustBar headline="5,500+ jobs · 4.9★ from 800+ reviews across Central Texas" />
+      <div className={styles.section}><ServiceCardComponent heading="What We Deliver" cards={services} /></div>
+      <div className={styles.section}><WhatToExpect sectionTitle="What to Expect" expectations={expectations} /></div>
+      <div className={styles.section}><ImpactMetrics metrics={metrics} cityName="Waco" /></div>
+      <div className={styles.section}><WhyChooseUs cityName="Waco" features={whyFeatures} title="Why Hire Blackline" /></div>
+      <div className={styles.section}><ProcessTimeline steps={processSteps} /></div>
+      <div className={styles.section}><GuaranteeSection /></div>
+      <div className={styles.section}><Testimonials testimonials={reviews} /></div>
+      <div className={styles.section}><LocalServiceAreas cityName="Waco" areas={localAreas} servicePath="services" title="Service Areas" /></div>
+      <div className={styles.section}><ValueComparison rows={comparisonRows} /></div>
+      <div className={styles.section}><FAQ cityName="Waco" faq={faq} title="Service FAQs" /></div>
       <CTABanner
-        headline="Ready to Schedule Your Service?"
-        subline="Same-day and emergency service available. Flat-rate pricing, 1-year warranty, no contracts ever."
+        headline="Ready to Get a Flat-Rate Asphalt Quote?"
+        subline="Free on-site estimates. Commercial paving contractor. Call (254) 880-8080."
         primaryText="Call Us Now"
-        primaryLink="tel:+12549001234"
-        secondaryText="Schedule Online"
+        primaryLink="tel:+12548808080"
+        secondaryText="Book Online"
         secondaryLink="/contact"
       />
-
       <div className={styles.section}>
-        <Variant2
-          title="Request a Service or Free Estimate"
-          cityName="Waco"
-          slug="services"
-          spot="services-page-form"
-          formVariant={2}
-        />
+        <Variant2 title="Request Service" cityName="Waco" slug="services" spot="services-index" formVariant={2} />
       </div>
-    </>
+    </main>
   );
 }

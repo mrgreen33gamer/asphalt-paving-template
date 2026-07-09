@@ -1,82 +1,91 @@
 // libs/local-db/reviews.ts
 // ─────────────────────────────────────────────────────────────────────────────
-// Static testimonials for Arctic Air HVAC — used by Testimonials component,
-// schema markup, and aggregate rating in layout.tsx.
+// Static testimonials for Blackline Paving — used by Testimonials component,
+// aggregate rating schema, and homepage social proof.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface Review {
+  id:       string;
   name:     string;
   location: string;
   rating:   number;
-  date:     string;
   text:     string;
   service?: string;
+  date?:    string;
 }
 
 const reviews: Review[] = [
   {
+    id:       'r1',
     name:     'Marcus T.',
-    location: 'Waco, TX',
-    rating:   5,
-    date:     'March 2026',
-    service:  'AC Replacement',
-    text:     "Our old unit finally gave out in the middle of a Texas summer. Arctic Air had a new system installed within 48 hours. The tech explained everything clearly, pricing was upfront, and the house has never been this comfortable. I can't recommend them enough.",
-  },
-  {
-    name:     'Sandra K.',
-    location: 'Hewitt, TX',
-    rating:   5,
-    date:     'February 2026',
-    service:  'Heating Repair',
-    text:     'Woke up at 6am to a cold house with the heater completely out. Called Arctic Air and they had someone at my door by 9am. Fixed the same day, fair price. This is the kind of service you tell your neighbors about.',
-  },
-  {
-    name:     'James R.',
     location: 'Woodway, TX',
     rating:   5,
-    date:     'January 2026',
-    service:  'Annual Maintenance Plan',
-    text:     'Been on their maintenance plan for two years now. They come out twice a year, always on time, always thorough. Caught a refrigerant issue last fall before it became a $3,000 emergency. The plan pays for itself every single year.',
+    service:  'Asphalt Paving',
+    date:     'March 2026',
+    text:     "Blackline replaced our crumbling driveway with proper base and hot-mix asphalt. Quote was flat-rate, pave day was clean, and they told us exactly when we could park. Looks sharp and feels solid under the Texas sun.",
   },
   {
-    name:     'Patricia L.',
-    location: 'Robinson, TX',
+    id:       'r2',
+    name:     'Elena R.',
+    location: 'Hewitt, TX',
     rating:   5,
-    date:     'December 2025',
-    service:  'New Installation',
-    text:     'Had three companies quote us. Arctic Air was honest about what size system we actually needed — not just upselling the biggest unit. The install was clean, fast, and our energy bill dropped by almost 30% the first month.',
+    service:  'Sealcoating',
+    date:     'February 2026',
+    text:     'Had our HOA drive lanes sealcoated before summer. Crew was professional, edges were crisp, and the blacktop looks brand new. Vince walked us through traffic control without pressure.',
   },
   {
-    name:     'David M.',
-    location: 'China Spring, TX',
-    rating:   5,
-    date:     'November 2025',
-    service:  'Duct Cleaning',
-    text:     'We had duct cleaning done before winter and the difference in air quality was immediate. My wife has allergies and she said it was the best she\'d breathed indoors in years. Great crew, very professional, left the house spotless.',
-  },
-  {
-    name:     'Angela W.',
-    location: 'Temple, TX',
-    rating:   5,
-    date:     'October 2025',
-    service:  'AC Repair',
-    text:     'AC went down on a Friday afternoon. I expected to wait all weekend but they came out Friday evening, diagnosed the problem fast, and had the part the next morning. No after-hours gouge either — totally fair rate. My new HVAC company for life.',
-  },
-  {
-    name:     'Robert H.',
-    location: 'Killeen, TX',
-    rating:   5,
-    date:     'September 2025',
-    service:  'Smart Thermostat Install',
-    text:     'Got a Nest installed and properly configured by Arctic Air. They set up the schedule for our family and showed us how to use the app. The tech was patient and knowledgeable — didn\'t feel rushed at all. Highly recommend.',
-  },
-  {
-    name:     'Cheryl B.',
+    id:       'r3',
+    name:     'James K.',
     location: 'Waco, TX',
     rating:   5,
+    service:  'Parking Lots',
+    date:     'January 2026',
+    text:     'Our shopping center needed a full parking lot rebuild. Blackline hit the schedule, coordinated striping same week, and provided COI paperwork fast. Professional crew from start to finish.',
+  },
+  {
+    id:       'r4',
+    name:     'Patricia N.',
+    location: 'Temple, TX',
+    rating:   5,
+    service:  'Pothole Repair',
+    date:     'December 2025',
+    text:     'Potholes at our clinic entrance were a liability. Blackline cut clean patches, compacted properly, and the repairs held through winter rains. Fair price and clear communication.',
+  },
+  {
+    id:       'r5',
+    name:     'Derek L.',
+    location: 'Killeen, TX',
+    rating:   5,
+    service:  'Line Striping',
+    date:     'November 2025',
+    text:     'Restriped our retail lot with ADA stalls, fire lanes, and directional arrows. Layout was measured correctly and paint still looks fresh months later. Highly recommend for commercial work.',
+  },
+  {
+    id:       'r6',
+    name:     'Sandra M.',
+    location: 'China Spring, TX',
+    rating:   5,
+    service:  'Overlay & Resurfacing',
+    date:     'October 2025',
+    text:     'Compared three companies. Blackline was clear about mill depth, tack coat, and when an overlay beats full reconstruction. The surface is smooth and drainage works as promised.',
+  },
+  {
+    id:       'r7',
+    name:     'Tony V.',
+    location: 'McGregor, TX',
+    rating:   5,
+    service:  'Asphalt Paving',
+    date:     'September 2025',
+    text:     'Rural driveway and apron rebuild. They handled soft spots in the base, rolled compact, and left the site cleaner than they found it. Will use again for the barn pad.',
+  },
+  {
+    id:       'r8',
+    name:     'Rachel B.',
+    location: 'Bellmead, TX',
+    rating:   5,
+    service:  'Sealcoating',
     date:     'August 2025',
-    service:  'Emergency Repair',
-    text:     'Called them at 10pm on a 102-degree day when our AC died. They answered immediately, had someone out within the hour, and fixed it that night. I have two small kids at home — this company genuinely saved us. Thank you.',
+    text:     'Church parking lot sealcoat and restripe. Blackline worked around Sunday services, protected landscaping, and finished on schedule. Our congregation noticed the upgrade immediately.',
   },
 ];
 
