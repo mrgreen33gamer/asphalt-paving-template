@@ -259,3 +259,50 @@
     justify-content: center;
   }
 }
+
+/* === COOKIE UNIQUENESS — asphalt-paving-template === */
+.backdrop {
+  bottom: 2rem !important;
+  right: 2rem !important;
+  left: auto !important;
+  top: auto !important;
+  max-width: 340px !important;
+  transform: none;
+}
+
+.card {
+  background: rgba($obsidian, 0.96) !important;
+  border: 1px solid rgba($white, 0.12) !important;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1.75rem !important;
+  border-top: 3px solid $orange !important;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $orange, transparent);
+    pointer-events: none;
+  }
+}
+
+.iconWrap {
+  border-radius: 12px !important;
+  background: rgba($orange, 0.14) !important;
+  border-color: rgba($orange, 0.28) !important;
+  color: $orange !important;
+}
+
+.btnAccept {
+  background: $lightorange !important;
+  color: $obsidian !important;
+  border-radius: 8px !important;
+  &:hover { filter: brightness(1.08); }
+}
+
+.btnDecline,
+.btnEssential {
+  border-radius: 8px !important;
+}
+/* end cookie uniqueness */

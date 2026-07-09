@@ -297,3 +297,20 @@
 }
 
 /* end identity layer */
+
+/* === HEADER PATTERN UNIQUENESS — asphalt-paving-template === */
+.header,
+.shell,
+.bar,
+.navShell,
+.root {
+  // best-effort: classes vary; also target common wrappers
+}
+
+.header {
+  background-image: linear-gradient(135deg, rgba($orange, 0.07) 0%, transparent 50%) !important;
+  border-bottom: 2px solid rgba($orange, 0.15) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+/* end header pattern */

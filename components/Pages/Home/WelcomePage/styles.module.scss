@@ -229,7 +229,7 @@
   }
 }
 
-// ── Control panel chrome ───────────────────────────────────────────────────
+// ── Paving Job Ticket / Plant Board ────────────────────────────────────────
 
 .panel {
   width: min(100%, 400px);
@@ -243,14 +243,78 @@
   overflow: hidden;
 }
 
+.jobTicket {
+  position: relative;
+  border-radius: 6px 14px 6px 14px;
+  border: 1px solid rgba($orange, 0.28);
+  // Dark tar texture
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    ),
+    radial-gradient(ellipse 90% 50% at 20% 10%, rgba($orange, 0.08), transparent 55%),
+    linear-gradient(165deg, #1c1612 0%, #0e0c0a 55%, #0a0908 100%);
+  box-shadow:
+    inset 0 1px 0 rgba($orange, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 28px 56px rgba(0, 0, 0, 0.5);
+}
+
+.ticketStripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  // Reflective striping accent
+  background: repeating-linear-gradient(
+    180deg,
+    $orange 0 10px,
+    #fafaf9 10px 20px
+  );
+  z-index: 2;
+}
+
+.ticketPunch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #2a2420, #0a0908 70%);
+  border: 1px solid rgba($white, 0.12);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
 .panelBezel {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.55rem 0.75rem;
-  background: linear-gradient(180deg, #2a2e35 0%, #1c1f25 100%);
-  border-bottom: 1px solid rgba($white, 0.08);
+  padding: 0.55rem 0.75rem 0.55rem 1rem;
+  background: linear-gradient(180deg, #2a2218 0%, #1a1510 100%);
+  border-bottom: 1px solid rgba($orange, 0.15);
+}
+
+.jobTicket .panelTitle {
+  letter-spacing: 0.16em;
+  color: rgba($orange, 0.75);
+}
+
+.jobTicket .statusLed {
+  background: $orange;
+  box-shadow: 0 0 8px rgba($orange, 0.7);
+}
+
+.jobTicket .meterFill {
+  background: linear-gradient(90deg, #9a3412, $orange, #fbbf24);
+}
+
+.jobTicket .gaugeValue {
+  color: #fb923c;
 }
 
 .screw {
@@ -618,3 +682,28 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — asphalt-paving-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: repeating-linear-gradient(23deg, transparent 0 18px, rgba($orange, 0.025) 18px 19px),
+      repeating-linear-gradient(-23deg, transparent 0 18px, rgba($white, 0.018) 18px 19px) !important;
+    background-size: auto !important;
+    opacity: 0.62 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 24% 20%, rgba($orange, 0.066), transparent 70%), radial-gradient(ellipse 40% 50% at 73% 71%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */

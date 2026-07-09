@@ -127,20 +127,19 @@ function ToggleSwitch({
   );
 }
 
-function PanelChrome({ children }: { children: React.ReactNode }) {
+function JobTicketChrome({ children }: { children: React.ReactNode }) {
   return (
-    <div className={styles.panel}>
+    <div className={`${styles.panel} ${styles.jobTicket}`}>
+      <div className={styles.ticketStripe} aria-hidden="true" />
       <div className={styles.panelBezel} aria-hidden="true">
-        <span className={styles.screw} />
-        <span className={styles.screw} />
-        <span className={styles.panelTitle}>CONTROL</span>
-        <span className={styles.screw} />
-        <span className={styles.screw} />
+        <span className={styles.ticketPunch} />
+        <span className={styles.panelTitle}>PAVING JOB TICKET</span>
+        <span className={styles.ticketPunch} />
       </div>
       <div className={styles.panelStatus} aria-hidden="true">
         <span className={styles.statusLed} />
-        <span className={styles.statusText}>SYSTEM ACTIVE</span>
-        <span className={styles.statusTime}>LIVE</span>
+        <span className={styles.statusText}>PLANT BOARD · LIVE</span>
+        <span className={styles.statusTime}>CREW A</span>
       </div>
       <div className={styles.panelBody}>{children}</div>
     </div>
@@ -212,15 +211,15 @@ const authorMeta = "Property manager · Temple";
 const rating = 5;
 const schematicLabel = "Blackline schematic";
 const gauges = [
-  { label: "Sq ft paved", value: "2M+" },
-  { label: "Rating", value: "4.8 ★" },
-  { label: "Crews", value: "Full-time" },
-  { label: "Warranty", value: "2-yr" }
+  { label: "Tonnage", value: "48 t" },
+  { label: "Lane status", value: "Open" },
+  { label: "Compaction", value: "96%" },
+  { label: "Cure timer", value: "2.5h" }
 ];
 const toggles = [
-  { label: "Licensed crew", on: true },
-  { label: "Same-week", on: true },
-  { label: "Warrantied", on: true }
+  { label: "Hot plant", on: true },
+  { label: "Striping ready", on: true },
+  { label: "Traffic control", on: true }
 ];
 const textureSrc = '/pages/home/welcome/hero-main.jpg';
 const textureAlt = 'Texture';
@@ -228,7 +227,7 @@ const accentWord = "Blackline";
 
   // Stable serial for SSR/hydration — avoid Math.random in render of serial
   // by using a fixed-looking decorative suffix derived from gauge count.
-  const serial = `CH-${String(gauges.length).padStart(2, '0')}`;
+  const serial = `JT-${String(gauges.length).padStart(2, '0')}-BL`;
 
   return (
     <section className={styles.hero} aria-label="Hero">
@@ -301,7 +300,7 @@ const accentWord = "Blackline";
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.28, ease: 'easeOut' }}
         >
-          <PanelChrome>
+          <JobTicketChrome>
             <div className={styles.gaugeList}>
               {gauges.map((g, i) => (
                 <GaugeRow
@@ -330,7 +329,7 @@ const accentWord = "Blackline";
               </div>
               <span className={styles.footerSerial}>{serial}</span>
             </div>
-          </PanelChrome>
+          </JobTicketChrome>
         </motion.div>
       </div>
     </section>
