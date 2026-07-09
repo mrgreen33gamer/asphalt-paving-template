@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Asphalt Paving",
       body: "New and replacement asphalt for driveways, lanes, and pads — proper base, hot-mix, and compaction built for Central Texas heat.",
       link: "/services/asphalt-paving",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faSprayCan,
       title: "Sealcoating",
       body: "Protective sealcoat that restores color, blocks UV, and extends pavement life for homes, HOAs, and commercial lots.",
       link: "/services/sealcoating",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faParking,
       title: "Parking Lots",
       body: "Full parking lot paving, rebuilds, and phased commercial work that keeps tenants open and traffic flowing.",
       link: "/services/parking-lots",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faPaintRoller,
       title: "Line Striping",
       body: "ADA stalls, fire lanes, arrows, and layout striping that keeps your lot compliant and easy to navigate.",
       link: "/services/line-striping",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faWrench,
       title: "Pothole Repair",
       body: "Cut-and-patch repairs that hold — honest advice on when a patch is enough vs. when overlay is smarter.",
       link: "/services/pothole-repair",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faLayerGroup,
       title: "Overlay & Resurfacing",
       body: "Mill and overlay to restore ride quality when the base is sound — faster and often lower cost than full rebuild.",
       link: "/services/overlay-resurfacing",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -165,6 +171,9 @@ export default function HomePage() {
       <WelcomePage />
       <TrustBar headline="4.9★ · 800+ reviews · 5,500+ jobs across Central Texas" />
       <div className={styles.section}>
+        <ImpactMetrics metrics={metrics} cityName="Waco" title="23 Years, By the Numbers" />
+      </div>
+      <div className={styles.section}>
         <ServiceCardComponent
           heading="Asphalt Paving Services Built for Central Texas"
           subheading="Paving, sealcoating, parking lots, striping, pothole repair, and overlays — flat-rate quotes from a commercial paving contractor."
@@ -172,13 +181,10 @@ export default function HomePage() {
         />
       </div>
       <div className={styles.section}>
-        <ImpactMetrics metrics={metrics} cityName="Waco" title="23 Years, By the Numbers" />
+        <WhatToExpect sectionTitle="What to Expect Working With Us" expectations={expectations} />
       </div>
       <div className={styles.section}>
         <WhyChooseUs cityName="Waco" features={whyFeatures} title="Why Central Texas Chooses Blackline" />
-      </div>
-      <div className={styles.section}>
-        <WhatToExpect sectionTitle="What to Expect Working With Us" expectations={expectations} />
       </div>
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
@@ -189,20 +195,22 @@ export default function HomePage() {
       <div className={styles.section}>
         <GuaranteeSection />
       </div>
+      <CTABanner
+        headline="Driveways & Lots That Last."
+        subline="Commercial-grade asphalt paving, patching, and sealcoating — built for Central Texas heat and traffic."
+        primaryText="Call (254) 880-8080"
+        primaryLink="tel:+12548808080"
+        secondaryText="Request Site Visit"
+        secondaryLink="/contact"
+      
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+       />
       <div className={styles.section}>
         <LocalServiceAreas cityName="Waco" areas={localAreas} servicePath="services" title="Serving Waco & Central Texas" />
       </div>
       <div className={styles.section}>
         <FAQ cityName="Waco" faq={faq} title="Asphalt Paving FAQs" />
       </div>
-      <CTABanner
-        headline="Ready for Pavement Done Right?"
-        subline="Free on-site estimate. Flat-rate quotes. Commercial paving contractor. 2-Year Workmanship on New Pavement."
-        primaryText="Call Us Now"
-        primaryLink="tel:+12548808080"
-        secondaryText="Book Online"
-        secondaryLink="/contact"
-      />
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>

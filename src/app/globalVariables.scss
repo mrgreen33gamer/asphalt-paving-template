@@ -1,44 +1,30 @@
-// src/app/globalVariables.scss
-// ─────────────────────────────────────────────────────────────────────────────
-// Blackline Paving — Brand Tokens
-//
-// THREE DISTINCT FONTS:
-//   $titleFont  → Barlow Condensed  — bold condensed display (hero h1, section titles)
-//   $headerFont → Outfit            — clean geometric sans   (nav, card titles, labels, CTAs)
-//   $textFont   → Inter             — refined humanist sans  (body copy, form text, paragraphs)
-//
-// Usage guide:
-//   h1, .hero headline              → $titleFont  (uppercase, tight tracking)
-//   h2, h3, nav links, btn text     → $headerFont (medium weight, normal case)
-//   p, label, input, small text     → $textFont   (regular/medium weight)
-// ─────────────────────────────────────────────────────────────────────────────
+// Auto uniqueness tokens — road crew industrial
+$titleFont:  var(--font-title),  'Bebas Neue', sans-serif;
+$headerFont: var(--font-header), 'Barlow', sans-serif;
+$textFont:   var(--font-body),   'Roboto Condensed', sans-serif;
 
-$titleFont:  var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-$headerFont: var(--font-outfit),           'Outfit',           sans-serif;
-$textFont:   var(--font-inter),            'Inter',            sans-serif;
-
-// ── Core Palette ─────────────────────────────────────────────────────────────
 $black:      #000000;
-$obsidian:   #1e293b;
-$blackflat:  #334155;
+$obsidian:   #1c1917;
+$blackflat:  #1c1917;
 $white:      #FFFFFF;
-$offwhite:   #f8fafc;
+$offwhite:   #fafaf9;
 
-// Greys (slate charcoal-tinted)
 $darkgrey:   #94a3b8;
 $grey:       #64748b;
-$lightgrey:  #cbd5e1;
+$lightgrey:  #e2e8f0;
 
-// Brand Accent — amber on slate charcoal
-$orange:     #f59e0b;
-$lightorange:#fbbf24;
-$darkorange: #b45309;
+$orange:     #ea580c;
+$lightorange:#fb923c;
+$darkorange: #9a3412;
 
-// Legacy aliases
 $green:      $orange;
 $lightgreen: $lightorange;
 $darkgreen:  $darkorange;
-$blue:       #1e6fa8;
+$blue:       #ea580c;
 
-// Error
+$radius-sm:  2px;
+$radius-md:  4px;
+$radius-lg:  8px;
+$radius-pill: 4px;
+
 $danger-red: #ef4444;

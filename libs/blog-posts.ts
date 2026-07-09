@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Sealcoating',
     date:     'April 18, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'Fresh sealcoat on asphalt driveway in Central Texas',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Repairs',
     date:     'April 14, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageSrc: '/pages/home/welcome/after.jpg',
     imageAlt: 'Pothole repair compared with asphalt overlay options',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Striping',
     date:     'April 10, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/heat-pump.jpg',
+    imageSrc: '/pages/home/services/service-1.jpg',
     imageAlt: 'Freshly striped commercial parking lot with ADA stalls',
   },
 ];
