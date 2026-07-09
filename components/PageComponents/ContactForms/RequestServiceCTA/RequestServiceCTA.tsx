@@ -24,17 +24,17 @@ interface RequestServiceCTAProps {
 }
 
 const SERVICES: Service[] = [
-  { icon: faGlobe,         label: 'Web Design' },
-  { icon: faCodeBranch,    label: 'Custom Software' },
-  { icon: faImagePortrait, label: 'Graphic Design' },
-  { icon: faBullhorn,      label: 'Marketing / SEO' },
-  { icon: faRobot,         label: 'AI Automations' },
-  { icon: faCubesStacked,  label: '3D Modeling' },
+  { icon: faGlobe,         label: 'Asphalt Paving' },
+  { icon: faCodeBranch,    label: 'Sealcoating' },
+  { icon: faImagePortrait, label: 'Parking Lots' },
+  { icon: faBullhorn,      label: 'Line Striping' },
+  { icon: faRobot,         label: 'Pothole Repair' },
+  { icon: faCubesStacked,  label: 'Overlay & Resurfacing' },
 ];
 
 export default function RequestServiceCTA({
-  headline = "Let's Build Something That Actually Works.",
-  subline  = "Pick the services you're interested in — we'll put together a custom proposal tailored to your business.",
+  headline = "Let's Get Your Pavement Done Right.",
+  subline  = "Pick the services you're interested in — we'll put together a flat-rate quote for your property.",
   ctaLabel = "Get My Free Quote",
 }: RequestServiceCTAProps) {
   const [selected, setSelected] = useState<string[]>([]);

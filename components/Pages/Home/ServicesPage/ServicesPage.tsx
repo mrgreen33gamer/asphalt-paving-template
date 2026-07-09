@@ -24,14 +24,12 @@ interface SectionProps {
 
 const ServicesPage: React.FC<SectionProps> = ({ direction, variants, handleDragEnd, handleAnimationComplete }) => {
   const services = [
-    // ✅ FIXED: All links updated to real App Router paths
-    { serviceTitle: 'Web Design',           imgSrc: '/pages/home/services/web-design.png?v=1',              imgAlt: 'Web Design Services',           pageLink: '/services/website-design' },
-    { serviceTitle: 'Graphic Design',       imgSrc: '/pages/home/services/graphic-services.png?v=1',        imgAlt: 'Graphic Design Services',       pageLink: '/services/graphic-design' },
-    { serviceTitle: 'Data Engineering',     imgSrc: '/pages/home/services/data-services.png?v=1',           imgAlt: 'Data Engineering Services',     pageLink: '/services/software-engineering' },
-    { serviceTitle: 'Software Engineering', imgSrc: '/pages/home/services/software-services.png?v=1',       imgAlt: 'Software Engineering Services', pageLink: '/services/software-engineering' },
-    { serviceTitle: 'Mobile Apps',          imgSrc: '/pages/home/services/mobile-apps-services.png?v=1',    imgAlt: 'Mobile Apps Services',          pageLink: '/services/software-engineering' },
-    { serviceTitle: '3D Modeling',          imgSrc: '/pages/home/services/3d-modeling.png?v=3',             imgAlt: '3D Modeling Services',          pageLink: '/services/graphic-design' },
-    { serviceTitle: 'Digital Marketing',    imgSrc: '/pages/home/services/digital-marketing-services.png?v=1', imgAlt: 'Digital Marketing Services', pageLink: '/services/marketing-solutions' },
+    { serviceTitle: 'Asphalt Paving',        imgSrc: '/pages/home/services/web-design.png?v=1',              imgAlt: 'Asphalt Paving Services',        pageLink: '/services/asphalt-paving' },
+    { serviceTitle: 'Sealcoating',           imgSrc: '/pages/home/services/graphic-services.png?v=1',        imgAlt: 'Sealcoating Services',           pageLink: '/services/sealcoating' },
+    { serviceTitle: 'Parking Lots',          imgSrc: '/pages/home/services/data-services.png?v=1',           imgAlt: 'Parking Lot Paving',             pageLink: '/services/parking-lots' },
+    { serviceTitle: 'Line Striping',         imgSrc: '/pages/home/services/software-services.png?v=1',       imgAlt: 'Line Striping Services',         pageLink: '/services/line-striping' },
+    { serviceTitle: 'Pothole Repair',        imgSrc: '/pages/home/services/mobile-apps-services.png?v=1',    imgAlt: 'Pothole Repair Services',        pageLink: '/services/pothole-repair' },
+    { serviceTitle: 'Overlay & Resurfacing', imgSrc: '/pages/home/services/3d-modeling.png?v=3',             imgAlt: 'Overlay and Resurfacing',        pageLink: '/services/overlay-resurfacing' },
   ];
 
   const numServices = services.length;
@@ -74,15 +72,17 @@ const ServicesPage: React.FC<SectionProps> = ({ direction, variants, handleDragE
         border: 0,
         zIndex: -1,
       }}>
-        <Link href="/services/website-design">Web Design Services in Waco TX</Link>
-        <Link href="/services/graphic-design">Graphic Design Services in Central Texas</Link>
-        <Link href="/services/software-engineering">Custom Software Development Waco TX</Link>
-        <Link href="/services/marketing-solutions">Digital Marketing Services Waco TX</Link>
-        <Link href="/services">All Services — Scott Applications</Link>
+        <Link href="/services/asphalt-paving">Asphalt Paving in Waco TX</Link>
+        <Link href="/services/sealcoating">Sealcoating Services in Central Texas</Link>
+        <Link href="/services/parking-lots">Parking Lot Paving Waco TX</Link>
+        <Link href="/services/line-striping">Line Striping Services Waco TX</Link>
+        <Link href="/services/pothole-repair">Pothole Repair Waco TX</Link>
+        <Link href="/services/overlay-resurfacing">Asphalt Overlay and Resurfacing Central Texas</Link>
+        <Link href="/services">All Services — Blackline Paving</Link>
       </nav>
 
       <span id={styles.backgroundImage}>
-        <Image quality={100} fill style={{ objectFit: 'cover' }} sizes="100vw" src='/pages/home/services/background-image.png?v=3' alt="Background Image for Services Page - Scott Applications - Background" />
+        <Image quality={100} fill style={{ objectFit: 'cover' }} sizes="100vw" src='/pages/home/services/background-image.png?v=3' alt="Background Image for Services Page - Blackline Paving - Background" />
       </span>
       <div className={styles.wheelContainer} style={{ width: `${containerSizeVmin}vmin`, height: `${containerSizeVmin}vmin` }}>
         <svg className={styles.linesSvg} viewBox="0 0 100 100">
@@ -215,7 +215,7 @@ const CircleCard: React.FC<{
           sizes="(max-width: 768px) 100vw, 300px"
           src={imgSrc}
           quality={100}
-          alt={`${imgAlt} - Scott Applications LLC - Waco TX`}
+          alt={`${imgAlt} - Blackline Paving - Waco TX`}
         />
       </motion.div>
     </motion.div>
@@ -265,7 +265,7 @@ const GridCard: React.FC<{
             sizes="(max-width: 768px) 100vw, 300px"
             src={imgSrc}
             quality={100}
-            alt={`${imgAlt} - Scott Applications LLC - Waco TX`}
+            alt={`${imgAlt} - Blackline Paving - Waco TX`}
           />
         </motion.div>
       </div>

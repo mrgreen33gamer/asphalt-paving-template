@@ -97,7 +97,7 @@ export default function SectionMap() {
       hqEl.appendChild(hqDot);
       new mapboxgl.Marker({ element: hqEl, anchor: 'center' })
         .setLngLat([-97.1315, 31.5548])
-        .setPopup(new mapboxgl.Popup().setHTML('<strong>Scott Applications HQ</strong><br>212 Dallas St, Waco, Texas 76704'))
+        .setPopup(new mapboxgl.Popup().setHTML('<strong>Blackline Paving</strong><br>4200 Franklin Ave, Waco, Texas 76710'))
         .addTo(currentMap);
 
       // ── CLIENT MARKERS ────────────────────────────
@@ -222,7 +222,7 @@ export default function SectionMap() {
       </div>
 
       <div className={styles.mapLegend}>
-        <div><span className={styles.hqDot} /> Scott Applications HQ – Waco</div>
+        <div><span className={styles.hqDot} /> Blackline Paving – Waco</div>
         <div><span className={styles.clientDot} /> Clients &amp; Towns Serviced</div>
       </div>
 

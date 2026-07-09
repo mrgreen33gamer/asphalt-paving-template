@@ -11,7 +11,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleCheck, faExclamationTriangle, faArrowRight, faArrowLeft,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind, faBolt,
+  faRoad, faPersonWalking, faHouse, faPaintRoller, faWrench, faIndustry, faBolt,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -22,13 +22,13 @@ interface Variant4Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair',        sub: 'System not cooling, strange noises' },
-  { icon: faFire,            label: 'Heating / Furnace', sub: 'Heat not working, furnace issues' },
-  { icon: faWrench,          label: 'New Installation',  sub: 'Replace or add a new system' },
-  { icon: faFilter,          label: 'Duct Cleaning',     sub: 'Improve airflow & air quality' },
-  { icon: faThermometerHalf, label: 'Maintenance',       sub: 'Tune-up, inspection, seasonal' },
-  { icon: faWind,            label: 'Air Quality',       sub: 'Filters, purifiers, humidity' },
-  { icon: faBolt,            label: 'Emergency',         sub: 'System down, urgent repair needed' },
+  { icon: faRoad,            label: 'Asphalt Paving',             sub: 'New pave or full replacement' },
+  { icon: faPersonWalking,   label: 'Sealcoating',      sub: 'Driveways, HOAs, parking lots' },
+  { icon: faHouse,           label: 'Parking Lots',            sub: 'Commercial lots and rebuilds' },
+  { icon: faPaintRoller,     label: 'Line Striping',   sub: 'ADA, fire lanes, arrows' },
+  { icon: faWrench,          label: 'Pothole Repair',        sub: 'Cracks, sections, trip hazards' },
+  { icon: faIndustry,        label: 'Overlay & Resurfacing',    sub: 'Mill and overlay projects' },
+  { icon: faBolt,            label: 'Other / Not Sure',       sub: 'Tell us what you need' },
 ];
 
 const BUDGET_LABELS = ['Under $500', '$500–$1,500', '$1,500–$5,000', '$5,000–$10,000', '$10,000+'];
@@ -143,7 +143,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
                   </div>
                   <h3 className={styles.successTitle}>You're All Set!</h3>
                   <p className={styles.successText}>
-                    A licensed Arctic Air tech will reach out about your <strong>{selectedService}</strong> service.
+                    An Blackline estimator will reach out about your <strong>{selectedService}</strong> service.
                   </p>
                   <div className={styles.successSummary}>
                     <div className={styles.summaryRow}><span>Service</span><span>{selectedService}</span></div>
@@ -232,7 +232,7 @@ export default function Variant4({ title, cityName, slug, spot, formVariant }: V
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="v4r-phone">Phone *</label>
                         <input id="v4r-phone" className={styles.input} name="phone" type="tel"
-                          placeholder="(254) 555-0100" required value={formData.phone} onChange={handleChange} />
+                          placeholder="(254) 880-8080" required value={formData.phone} onChange={handleChange} />
                       </div>
                     </div>
                     <div className={styles.field}>
