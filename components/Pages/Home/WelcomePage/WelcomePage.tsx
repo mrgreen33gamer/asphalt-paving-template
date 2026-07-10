@@ -63,7 +63,7 @@ function CountingValue({
   );
 }
 
-function GaugeRow({
+function PlantDial({
   label,
   value,
   unit,
@@ -76,28 +76,33 @@ function GaugeRow({
 }) {
   const parsed = useMemo(() => parseGaugeValue(value), [value]);
   const pct = parsed.numeric !== null
-    ? Math.min(100, Math.max(8, Math.abs(parsed.numeric) > 100 ? 72 : Math.abs(parsed.numeric)))
-    : 55 + (index % 3) * 12;
+    ? Math.min(100, Math.max(12, Math.abs(parsed.numeric) > 100 ? 78 : Math.abs(parsed.numeric)))
+    : 48 + (index % 4) * 11;
+  const r = 34;
+  const c = 2 * Math.PI * r;
+  const dash = (c * 0.72 * pct) / 100;
 
   return (
-    <div className={styles.gauge}>
-      <div className={styles.gaugeHeader}>
-        <span className={styles.gaugeLabel}>{label}</span>
-        <CountingValue value={value} unit={unit} delay={0.45 + index * 0.12} />
-      </div>
-      <div className={styles.meterTrack} aria-hidden="true">
-        <motion.div
-          className={styles.meterFill}
-          initial={{ width: '0%' }}
-          animate={{ width: `${pct}%` }}
-          transition={{ duration: 1.35, delay: 0.5 + index * 0.1, ease: [0.34, 1.1, 0.64, 1] }}
-        />
-        <div className={styles.meterTicks}>
-          {[0, 1, 2, 3, 4].map((t) => (
-            <span key={t} className={styles.meterTick} />
-          ))}
+    <div className={styles.plantDial}>
+      <div className={styles.plantDialRing} aria-hidden="true">
+        <svg viewBox="0 0 88 88" className={styles.plantSvg}>
+          <circle cx="44" cy="44" r={r} className={styles.plantTrack} />
+          <motion.circle
+            cx="44"
+            cy="44"
+            r={r}
+            className={styles.plantFill}
+            strokeDasharray={`${dash} ${c}`}
+            initial={{ strokeDasharray: `0 ${c}` }}
+            animate={{ strokeDasharray: `${dash} ${c}` }}
+            transition={{ duration: 1.4, delay: 0.35 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+          />
+        </svg>
+        <div className={styles.plantDialCenter}>
+          <CountingValue value={value} unit={unit} delay={0.4 + index * 0.1} />
         </div>
       </div>
+      <span className={styles.plantDialLabel}>{label}</span>
     </div>
   );
 }
@@ -301,9 +306,9 @@ const accentWord = "Blackline";
           transition={{ duration: 0.7, delay: 0.28, ease: 'easeOut' }}
         >
           <JobTicketChrome>
-            <div className={styles.gaugeList}>
+            <div className={styles.plantDialGrid}>
               {gauges.map((g, i) => (
-                <GaugeRow
+                <PlantDial
                   key={g.label}
                   label={g.label}
                   value={g.value}
@@ -313,19 +318,21 @@ const accentWord = "Blackline";
               ))}
             </div>
             {toggles.length > 0 && (
-              <div className={styles.toggleList}>
+              <div className={styles.togglePills}>
                 {toggles.map((t, i) => (
                   <ToggleSwitch key={t.label} label={t.label} on={t.on} index={i} />
                 ))}
               </div>
             )}
-            <div className={styles.panelFooterStatic} aria-hidden="true">
-              <div className={styles.miniMeter}>
-                <span className={styles.miniMeterBar} />
-                <span className={styles.miniMeterBar} />
-                <span className={styles.miniMeterBar} />
-                <span className={styles.miniMeterBar} />
-                <span className={styles.miniMeterBar} />
+            <div className={styles.laneStrip} aria-hidden="true">
+              <span className={styles.laneLabel}>Lane progress</span>
+              <div className={styles.laneTrack}>
+                <motion.div
+                  className={styles.laneFill}
+                  initial={{ width: '0%' }}
+                  animate={{ width: '78%' }}
+                  transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                />
               </div>
               <span className={styles.footerSerial}>{serial}</span>
             </div>
