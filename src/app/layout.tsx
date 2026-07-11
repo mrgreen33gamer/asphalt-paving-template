@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     siteName: "Blackline Paving",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 4000,
         height: 630,
         alt: "Blackline Paving — Waco TX Asphalt Paving · Sealcoating · Striping",
@@ -130,7 +130,7 @@ export const metadata: Metadata = {
     title: "Blackline Paving | Waco TX Asphalt Paving Contractor",
     description:
       "Asphalt paving, sealcoating, parking lots, striping & overlays for Central Texas. Commercial paving contractor · 2-Year Workmanship on New Pavement.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,

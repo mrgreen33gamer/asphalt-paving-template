@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "Pothole Repair",
       body: "Cut-and-patch repairs that hold — honest advice on when a patch is enough vs. when overlay is smarter.",
       link: "/services/pothole-repair",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faLayerGroup,
       title: "Overlay & Resurfacing",
       body: "Mill and overlay to restore ride quality when the base is sound — faster and often lower cost than full rebuild.",
       link: "/services/overlay-resurfacing",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 
