@@ -1,242 +1,66 @@
-// _archetype-library/hero-g-dashboard/Component.tsx
-//
-// Hero G: Live Control Panel — industrial chrome, counting gauges from props,
-// toggle switches, small meters. Framer-motion for counter animations.
+// Asphalt Paving Hero — Blackline (road-crew industrial)
+// Photographic parallax stage + an authentic paving-crew card replaces the
+// abstract "job ticket" dashboard schematic. Real imagery, safety-orange
+// detailing, Bebas headline. Photos live in /public/pages/home/welcome:
+//   hero-bg.jpg   — wide scene: paver laying fresh hot-mix on a rural highway
+//   hero-crew.jpg — subject/action: crew member raking fresh asphalt
 'use client';
-import React, { useEffect, useMemo, useState } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-function parseGaugeValue(raw: string): { numeric: number | null; prefix: string; suffix: string } {
-  const match = raw.match(/^([^0-9.-]*)(-?[\d.]+)(.*)$/);
-  if (!match) return { numeric: null, prefix: '', suffix: raw };
-  const num = parseFloat(match[2]);
-  if (Number.isNaN(num)) return { numeric: null, prefix: '', suffix: raw };
-  return { numeric: num, prefix: match[1], suffix: match[3] };
-}
-
-function CountingValue({
-  value,
-  unit,
-  delay = 0,
-}: {
-  value: string;
-  unit?: string;
-  delay?: number;
-}) {
-  const parsed = useMemo(() => parseGaugeValue(value), [value]);
-  const motionVal = useMotionValue(0);
-  const display = useTransform(motionVal, (v) => {
-    if (parsed.numeric === null) return value;
-    const decimals = String(parsed.numeric).includes('.')
-      ? (String(parsed.numeric).split('.')[1]?.length ?? 0)
-      : 0;
-    const rounded = decimals > 0 ? v.toFixed(decimals) : String(Math.round(v));
-    return `${parsed.prefix}${rounded}${parsed.suffix}`;
-  });
-  const [text, setText] = useState(parsed.numeric === null ? value : `${parsed.prefix}0${parsed.suffix}`);
-
-  useEffect(() => {
-    if (parsed.numeric === null) {
-      setText(value);
-      return;
-    }
-    const controls = animate(motionVal, parsed.numeric, {
-      duration: 1.6,
-      delay,
-      ease: [0.22, 1, 0.36, 1],
-    });
-    const unsub = display.on('change', (v) => setText(v));
-    return () => {
-      controls.stop();
-      unsub();
-    };
-  }, [parsed.numeric, value, delay, motionVal, display]);
-
-  return (
-    <span className={styles.gaugeValue}>
-      {text}
-      {unit ? <span className={styles.gaugeUnit}>{unit}</span> : null}
-    </span>
-  );
-}
-
-function PlantDial({
-  label,
-  value,
-  unit,
-  index,
-}: {
-  label: string;
-  value: string;
-  unit?: string;
-  index: number;
-}) {
-  const parsed = useMemo(() => parseGaugeValue(value), [value]);
-  const pct = parsed.numeric !== null
-    ? Math.min(100, Math.max(12, Math.abs(parsed.numeric) > 100 ? 78 : Math.abs(parsed.numeric)))
-    : 48 + (index % 4) * 11;
-  const r = 34;
-  const c = 2 * Math.PI * r;
-  const dash = (c * 0.72 * pct) / 100;
-
-  return (
-    <div className={styles.plantDial}>
-      <div className={styles.plantDialRing} aria-hidden="true">
-        <svg viewBox="0 0 88 88" className={styles.plantSvg}>
-          <circle cx="44" cy="44" r={r} className={styles.plantTrack} />
-          <motion.circle
-            cx="44"
-            cy="44"
-            r={r}
-            className={styles.plantFill}
-            strokeDasharray={`${dash} ${c}`}
-            initial={{ strokeDasharray: `0 ${c}` }}
-            animate={{ strokeDasharray: `${dash} ${c}` }}
-            transition={{ duration: 1.4, delay: 0.35 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-          />
-        </svg>
-        <div className={styles.plantDialCenter}>
-          <CountingValue value={value} unit={unit} delay={0.4 + index * 0.1} />
-        </div>
-      </div>
-      <span className={styles.plantDialLabel}>{label}</span>
-    </div>
-  );
-}
-
-function ToggleSwitch({
-  label,
-  on,
-  index,
-}: {
-  label: string;
-  on: boolean;
-  index: number;
-}) {
-  return (
-    <motion.div
-      className={`${styles.toggle} ${on ? styles.toggleOn : styles.toggleOff}`}
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.7 + index * 0.08 }}
-    >
-      <span className={styles.toggleLabel}>{label}</span>
-      <span className={styles.toggleTrack} aria-hidden="true">
-        <span className={styles.toggleThumb} />
-      </span>
-      <span className={styles.toggleState}>{on ? 'ON' : 'OFF'}</span>
-    </motion.div>
-  );
-}
-
-function JobTicketChrome({ children }: { children: React.ReactNode }) {
-  return (
-    <div className={`${styles.panel} ${styles.jobTicket}`}>
-      <div className={styles.ticketStripe} aria-hidden="true" />
-      <div className={styles.panelBezel} aria-hidden="true">
-        <span className={styles.ticketPunch} />
-        <span className={styles.panelTitle}>PAVING JOB TICKET</span>
-        <span className={styles.ticketPunch} />
-      </div>
-      <div className={styles.panelStatus} aria-hidden="true">
-        <span className={styles.statusLed} />
-        <span className={styles.statusText}>PLANT BOARD · LIVE</span>
-        <span className={styles.statusTime}>CREW A</span>
-      </div>
-      <div className={styles.panelBody}>{children}</div>
-    </div>
-  );
-}
-
 export default function WelcomePage() {
-const badgeText = 'Waco\'s Trusted Asphalt Paving Contractor — Since 2003';
-const headlineLines = [
-  'Asphalt. Sealcoat.',
-  'Striping.',
-];
-const headlineAccent = 'Blackline.';
-const subheadline = 'Free on-site estimates. Flat-rate quotes. 2-Year Workmanship on New Pavement. Asphalt Paving · Sealcoating · Striping for Central Texas homes and businesses.';
-const primaryCta = { label: 'Call (254) 880-8080', href: 'tel:+12548808080' };
-const secondaryCta = { label: 'Free Quote', href: '/contact' };
-const chips = [
-  'Free Estimates',
-  'Flat-Rate Quotes',
-  'Commercial Paving',
-  '23+ Yrs Local',
-  '2-Yr Warranty',
-];
-const stats = [
-  {
-    "value": "500+",
-    "label": "Jobs Done"
-  },
-  {
-    "value": "4.9 ★",
-    "label": "Rating"
-  },
-  {
-    "value": "15+",
-    "label": "Years Local"
-  },
-  {
-    "value": "1-Yr",
-    "label": "Warranty"
-  }
-];
-const meterTarget = 72;
-const meterTopLabel = "Peak load";
-const meterMidLabel = "Crew";
-const meterBotLabel = "Base";
-const particleColor = '#ea580c';
-const beforeImageSrc = '/pages/home/welcome/before.jpg';
-const afterImageSrc = '/pages/home/welcome/after.jpg';
-const beforeLabel = "Cracked lot";
-const afterLabel = "Fresh pave";
-const mapCenterLabel = 'Service HQ';
-const mapPins = [
-  { label: 'Waco', x: 42, y: 48 },
-  { label: 'Temple', x: 68, y: 62 },
-  { label: 'Killeen', x: 58, y: 72 },
-];
-const coverageLabel = 'Central Texas coverage';
-const materials = [
-  { name: "Hot Mix", swatch: "#ea580c", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Sealcoat", swatch: "#fb923c", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "Overlay", swatch: "#9a3412", imageSrc: "/pages/home/welcome/mat-3.jpg" },
-  { name: "Patch", swatch: "#c2410c", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Mill & Fill", swatch: "#78716c", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "Stripe", swatch: "#fafaf9", imageSrc: "/pages/home/welcome/mat-3.jpg" }
-];
-const quote = "Our apartment lot was a mess. Blackline milled, paved, and striped on schedule — looks brand new.";
-const authorName = "Derek H.";
-const authorMeta = "Property manager · Temple";
-const rating = 5;
-const schematicLabel = "Blackline schematic";
-const gauges = [
-  { label: "Tonnage", value: "48 t" },
-  { label: "Lane status", value: "Open" },
-  { label: "Compaction", value: "96%" },
-  { label: "Cure timer", value: "2.5h" }
-];
-const toggles = [
-  { label: "Hot plant", on: true },
-  { label: "Striping ready", on: true },
-  { label: "Traffic control", on: true }
-];
-const textureSrc = '/pages/home/welcome/hero-main.jpg';
-const textureAlt = 'Texture';
-const accentWord = "Blackline";
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
 
-  // Stable serial for SSR/hydration — avoid Math.random in render of serial
-  // by using a fixed-looking decorative suffix derived from gauge count.
-  const serial = `JT-${String(gauges.length).padStart(2, '0')}-BL`;
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '16%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, reduceMotion ? 1.08 : 1.16]);
+
+  // ── Copy preserved verbatim from the original hero ──────────────────────────
+  const badgeText = 'Waco\'s Trusted Asphalt Paving Contractor — Since 2003';
+  const headlineLines = [
+    'Asphalt. Sealcoat.',
+    'Striping.',
+  ];
+  const headlineAccent = 'Blackline.';
+  const subheadline = 'Free on-site estimates. Flat-rate quotes. 2-Year Workmanship on New Pavement. Asphalt Paving · Sealcoating · Striping for Central Texas homes and businesses.';
+  const primaryCta = { label: 'Call (254) 880-8080', href: 'tel:+12548808080' };
+  const secondaryCta = { label: 'Free Quote', href: '/contact' };
+  const chips = [
+    'Free Estimates',
+    'Flat-Rate Quotes',
+    'Commercial Paving',
+    '23+ Yrs Local',
+    '2-Yr Warranty',
+  ];
 
   return (
-    <section className={styles.hero} aria-label="Hero">
-      <div className={styles.shard} aria-hidden="true" />
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — paver laying fresh hot-mix asphalt */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Asphalt-dark, orange-tinted scrim keeps the headline legible and on-brand */}
+      <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.layout}>
         <div className={styles.content}>
@@ -299,44 +123,38 @@ const accentWord = "Blackline";
           </motion.div>
         </div>
 
+        {/* Authentic paving-crew photo — the ownable image, framed as a spec card */}
         <motion.div
           className={styles.visual}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.28, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.28, ease: 'easeOut' }}
         >
-          <JobTicketChrome>
-            <div className={styles.plantDialGrid}>
-              {gauges.map((g, i) => (
-                <PlantDial
-                  key={g.label}
-                  label={g.label}
-                  value={g.value}
-                  unit={undefined}
-                  index={i}
-                />
-              ))}
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/hero-crew.jpg"
+              alt="Asphalt paving crew member raking fresh hot-mix asphalt on a street resurfacing job"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 460px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              Paving Crew · On-Site
             </div>
-            {toggles.length > 0 && (
-              <div className={styles.togglePills}>
-                {toggles.map((t, i) => (
-                  <ToggleSwitch key={t.label} label={t.label} on={t.on} index={i} />
-                ))}
-              </div>
-            )}
-            <div className={styles.laneStrip} aria-hidden="true">
-              <span className={styles.laneLabel}>Lane progress</span>
-              <div className={styles.laneTrack}>
-                <motion.div
-                  className={styles.laneFill}
-                  initial={{ width: '0%' }}
-                  animate={{ width: '78%' }}
-                  transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-              <span className={styles.footerSerial}>{serial}</span>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Free on-site estimates
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 2-year workmanship warranty
+              </span>
             </div>
-          </JobTicketChrome>
+          </div>
         </motion.div>
       </div>
     </section>
